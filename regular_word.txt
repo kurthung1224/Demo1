@@ -1,0 +1,12 @@
+1,2,3,4,5,6,7,8,9,0,or,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,
+de,we,who,your,you,me,he,his,she,to,in,for,they,here,which
+an,with,new,this,on,and,by,can,now,is,have,re,off,at,
+do,one,get,are,only,how,what,when,her,the,-,of,,as,be,from,
+start,want,make,way,days,don't,look,received,from,table,style,
+color,font,font-size,font-family,class,br,userid,it,that,was,postfix,arial,
+no,not,none,out,div,all,will,if,has,would,may,were,about,localhost,been,up,width,
+its,unknown,img,td,auto,apr,our,their,also,but,go,email,please,more,port,block,had,said,
+message,center,time,after,date,rgb,my,other,times,one,two,right,over,so,like,just,mail,ald,en,
+left,mar,la,some,array,si,these,height,than,us,set,see,que,where,us,px,para,part,into,
+year,back,border,helo,number,small,padding,there,any,could,receive,both,against,between,during,
+through,before,then,because,since,him,fwd,
