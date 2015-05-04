@@ -1,0 +1,57 @@
+#val path = "/logstash/subject.txt"
+val path = "/logstash/content.txt"
+
+
+val file = sc.textFile(path)
+
+
+val Regex_word = """(^[A-z]+$)""".r
+def isWord(word: String): Boolean = {
+  word match {
+    case Regex_word(_ *) => true
+    case _ => false
+  }
+}
+
+
+val line = file.flatMap(_.replaceAll(", |,|  | '|' |: | -- |\\.\\.\\.|\\? |\\(|\\)|\\<|\\>|;|; ", " ").
+                split(" ")).
+                filter(_.size < 15).
+                map(_.toLowerCase).
+                filter(word => isWord(word)).
+                map(s => (s,1)).
+                reduceByKey(_ + _).
+                map(item => item.swap).
+                sortByKey(false, 1).
+                map(item => item.swap)
+
+
+val regular_path = "/logstash/regular_word.txt"
+val regular_file = sc.textFile(regular_path)
+val regular_words = regular_file.flatMap(_.split(",")).toArray
+
+import scala.util.control.Breaks._
+
+def isRegular(word: String): Boolean = {
+  breakable{
+    for(e <- regular_words){
+      if(word == e){
+        println(e + " found!")
+        return true
+        break
+      }
+    }
+  }
+  return false
+}
+
+var filtered_line = line
+
+for(e <- line.keys.collect) {
+  if(isRegular(e))
+    filtered_line = filtered_line.filter((s) => (s._1 != e))
+}
+
+filtered_line.collect
+filtered_line.take(50).foreach(println)
+
