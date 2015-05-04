@@ -1,0 +1,12 @@
+import org.apache.spark.mllib.clustering.KMeans
+import org.apache.spark.mllib.linalg.Vectors
+
+val data = sc.textFile("/kmeans/kmeans_data.txt")
+val parsedData = data.map(s => Vectors.dense(s.split(' ').map(_.toDouble))).cache()
+
+val numClusters = 5
+val numIterations = 20
+val clusters = KMeans.train(parsedData, numClusters, numIterations)
+
+val WSSSE = clusters.computeCost(parsedData)
+println("Within Set Sum of Squared Errors = " + WSSSE)
