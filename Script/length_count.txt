@@ -19,4 +19,5 @@ def compNum(s: String): String = {
 val line = file.map(s=> compNum(s))
 
 val aggr = line.countByValue
-aggr.foreach(println)
+val sorted = ListMap(aggr.toSeq.sortWith(_._2 > _._2):_*)
+sorted.foreach(println)
