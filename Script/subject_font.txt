@@ -1,0 +1,23 @@
+val file = sc.textFile("/length/subject_4.txt")
+
+var Regex_word = """(^\=\?)([^\?]+)(\?)(.*)""".r
+
+def isWord(word: String): Boolean = {
+  word match {
+    case Regex_word(_ *) => true
+    case _ => false
+  }
+}
+
+def ExtractFont(word: String): String = {
+  word match {
+    case Regex_word(a,b,c,d) => b
+  }
+}
+
+val line = file.filter(word => isWord(word)).map(s=>ExtractFont(s))
+val count = line.countByValue
+
+import scala.collection.immutable.ListMap
+val sorted = ListMap(count.toSeq.sortWith(_._2 > _._2):_*)
+sorted.foreach(println)

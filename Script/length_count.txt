@@ -1,0 +1,22 @@
+val file = sc.textFile("/length/length_4.txt")
+
+def compNum(s: String): String = {
+  val num = s.toInt
+  if (num < 500) return "0-500 words"
+  else if (num >= 500 && num < 1000) return "500-999 words"
+  else if (num >= 1000 && num < 2000) return "1000-1999 words"
+  else if (num >= 2000 && num < 3000) return "2000-2999 words"
+  else if (num >= 3000 && num < 4000) return "3000-3999 words"
+  else if (num >= 4000 && num < 5000) return "4000-4999 words"
+  else if (num >= 5000 && num < 6000) return "5000-5999 words"
+  else if (num >= 6000 && num < 7000) return "6000-6999 words"
+  else if (num >= 7000 && num < 8000) return "7000-7999 words"
+  else if (num >= 8000 && num < 9000) return "8000-8999 words"
+  else if (num >= 9000 && num < 10000) return "9000-9999 words"
+  else return  "more than 10000 words"
+}
+
+val line = file.map(s=> compNum(s))
+
+val aggr = line.countByValue
+aggr.foreach(println)

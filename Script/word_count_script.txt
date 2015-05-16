@@ -1,4 +1,4 @@
-#val path = "/logstash/subject.txt"
+//val path = "/logstash/subject.txt"
 val path = "/logstash/content.txt"
 
 
