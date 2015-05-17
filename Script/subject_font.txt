@@ -15,7 +15,7 @@ def ExtractFont(word: String): String = {
   }
 }
 
-val line = file.filter(word => isWord(word)).map(s=>ExtractFont(s))
+val line = file.filter(word => isWord(word)).map(s=>ExtractFont(s).toLowerCase)
 val count = line.countByValue
 
 import scala.collection.immutable.ListMap
